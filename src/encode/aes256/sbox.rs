@@ -28,4 +28,8 @@ impl SBox {
         }
         result
     }
+
+    pub fn substitute(&self, byte: u8) -> u8 {
+        self.table[byte as usize]
+    }
 }
