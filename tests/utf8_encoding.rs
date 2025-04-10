@@ -11,10 +11,10 @@ mod tests {
     #[test]
     fn random_unicode_stress_test() {
         use rand::Rng;
-        let mut rng = rand::thread_rng();
+        let mut rng = rand::rng();
 
         for _ in 0..10000 {
-            let code = rng.gen_range(0..=0x10FFFF);
+            let code = rng.random_range(0..=0x10FFFF);
             if let Some(c) = char::from_u32(code) {
                 let s = c.to_string();
                 assert_eq!(encode(&s), s.as_bytes());
