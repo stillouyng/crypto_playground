@@ -1,26 +1,15 @@
-# S-Box creating algorithm
+# S-Box (Substitution Box) for AES
+
+## Overview
+The S-Box is a **non-linear substitution table** used in AES (Rijndael cipher) to provide confusion.
+Each byte in the AES state is replaced via this table during encryption.
+
+## How It Works
 
 ## **1. Finding the Multiplicative Inverse**
 
-Foreach byte of `a` finds an inverse value `a⁻¹`. 
-1. If `a = 0`:
-    - **Special case:** `0x00` has no inverse.
-    - **In S-Box:** Directly use `0x63` (part of affine transform constant).
-2. If `a ≠ 0` we have a special algorithm:
-    - `a * a⁻¹ ≡ 1 mod 0x11B`.
-    - Algorithm steps:
-      1. **Note:** `a⁻¹ = a²⁵⁴`, because `a255 = 1`.
-      2. **Initialize:**
-         - `result = 1`
-         - `a_pow = a`
-         - `n = 254` (`0b11111110`), where `n` is degree
-      3. **Loop while n > 0:**
-         - **If `LSB` (the least significant bit) is 1** 
-           - Multiply `result` by `a_pow` in GF(2⁸) (`result = gf256_mul(result, a_pow)`).
-         - **Square a pow** (`a_pow = gf256_mul(a_pow, a_pow)`).
-         - **Right-shift `n`** (`n >>= 1`).
-      4. **Result:** result contains `a⁻¹`.
-
+- For input byte `a`, compute its multiplicative inverse `a⁻¹` in GF(256).
+- Except `a=0`, which maps to `0`.
 
 **Rust implementation**
 ```rust
@@ -38,10 +27,6 @@ impl GF256 {
             n >>= 1;
         }
         result
-    }
-
-    pub fn inverse(a: u8) -> u8 {
-        if a == 0 { 0 } else { Self::pow(a, 254) }
     }
 }
 ```
