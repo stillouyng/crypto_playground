@@ -9,6 +9,7 @@ Explore algorithms, test implementations, and break ciphers - all in one playgro
 Documentation is available: `docs/theory/`
 
 ### Roadmap
-| Method | Encode status | Decode status |
-|--------|---------------|---------------|
-| `XOR`  | ✅             | ❌             |
+| Method    | Encode status | Decode status |
+|-----------|---------------|---------------|
+| `XOR`     | ✅             | ❌             |
+| `AES-256` | 🚧            | ❌             |
