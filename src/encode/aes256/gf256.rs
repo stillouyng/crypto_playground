@@ -39,4 +39,16 @@ impl GF256 {
         }
         poly as u8
     }
+
+    pub fn inverse(a: u8) -> u8 {
+        if a == 0 { 0 } else { Self::pow(a, 254) }
+    }
+
+    pub fn pow(a: u8, power: u8) -> u8 {
+        let mut result = 1;
+        for _ in 0..power {
+            result = Self::mul(result, a);
+        }
+        result
+    }
 }
