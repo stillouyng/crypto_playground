@@ -1,0 +1,15 @@
+[package]
+name = "crypto_playground"
+version = "0.1.0"
+edition = "2024"
+authors = ["stillouyng <stillouyng@godblessed.ru"]
+description = "Crypto playground"
+license = "MIT"
+repository = "https://github.com/stillouyng/crypto_playground"
+
+[lib]
+name = "crypto_playground"
+path = "src/lib.rs"
+
+[dependencies]
+rand = "0.9.0"
