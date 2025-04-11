@@ -29,7 +29,7 @@ impl KeyExpansion {
                 temp = sub_word(&self.sbox, rot_word(temp));
                 temp[0] ^= self.rcon[i/8 - 1];
             } else if i % 8 == 4 {
-                temp = self.sub_word(temp);
+                temp = sub_word(&self.sbox, temp);
             }
 
             let new_word = xor_words(words[i-8], temp);
