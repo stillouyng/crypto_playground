@@ -1,4 +1,5 @@
 use crate::encode::SBox;
+use crate::utils::{sub_word, rot_word, xor_words};
 
 pub struct KeyExpansion {
     sbox: SBox,
@@ -14,19 +15,6 @@ impl KeyExpansion {
         }
     }
 
-    pub(crate) fn rot_word(word: [u8; 4]) -> [u8; 4] {
-        [word[1], word[2], word[3], word[0]]
-    }
-
-    pub(crate) fn sub_word(&self, word: [u8; 4]) -> [u8; 4] {
-        [
-            self.sbox.substitute(word[0]),
-            self.sbox.substitute(word[1]),
-            self.sbox.substitute(word[2]),
-            self.sbox.substitute(word[3]),
-        ]
-    }
-
     pub fn expand(&self, key: &[u8; 32]) -> Vec<[u8; 16]> {
         let mut words = Vec::with_capacity(60);
 
@@ -38,7 +26,7 @@ impl KeyExpansion {
             let mut temp = words[i-1];
 
             if i % 8 == 0 {
-                temp = self.sub_word(Self::rot_word(temp));
+                temp = sub_word(&self.sbox, rot_word(temp));
                 temp[0] ^= self.rcon[i/8 - 1];
             } else if i % 8 == 4 {
                 temp = self.sub_word(temp);
@@ -56,8 +44,4 @@ impl KeyExpansion {
             round_key
         }).collect()
     }
-}
-
-fn xor_words(a: [u8; 4], b: [u8; 4]) -> [u8; 4] {
-    [a[0] ^ b[0], a[1] ^ b[1], a[2] ^ b[2], a[3] ^ b[3]]
 }
