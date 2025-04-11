@@ -1,4 +1,2 @@
-
-pub mod gf256;
-pub mod sbox;
-pub mod aes;
+pub mod core;
+pub mod key_expansion;

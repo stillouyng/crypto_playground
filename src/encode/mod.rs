@@ -1,11 +1,15 @@
 mod utf8;
 mod xor;
 mod aes256;
+mod gf256;
+mod sbox;
 
 
 pub use utf8::encode;
-pub use xor::{xor_encrypt, generate_key};
-pub use aes256::{gf256, sbox, aes};
+pub use xor::{generate_key, xor_encrypt};
+pub use aes256::{core, key_expansion};
+pub use gf256::{GF256};
+pub use sbox::{SBox};
 
 
 pub fn encoding(data: &str, use_xor: bool) -> Vec<u8> {

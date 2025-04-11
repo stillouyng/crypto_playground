@@ -1,4 +1,5 @@
-use crate::encode::gf256::GF256;
+use crate::encode::GF256;
+
 
 pub struct SBox {
     pub table: [u8; 256],

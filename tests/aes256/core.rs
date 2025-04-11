@@ -1,7 +1,7 @@
 
 #[cfg(test)]
 mod tests {
-    use crypto_playground::encode::aes::AES;
+    use crypto_playground::encode::core::AES;
 
     #[test]
     fn test_shift_rows() {

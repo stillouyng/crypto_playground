@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod tests {
-    use crypto_playground::encode::gf256::GF256;
+    use crypto_playground::encode::GF256;
 
     #[test]
     fn test_add() {

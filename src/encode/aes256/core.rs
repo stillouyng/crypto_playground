@@ -1,5 +1,5 @@
-use crate::encode::sbox::SBox;
-use crate::encode::gf256::GF256;
+use crate::encode::SBox;
+use crate::encode::GF256;
 
 
 pub struct AES {

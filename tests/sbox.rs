@@ -1,6 +1,7 @@
 #[cfg(test)]
 mod tests {
-    use crypto_playground::encode::{sbox::SBox, gf256::GF256};
+    use crypto_playground::encode::GF256;
+    use crypto_playground::encode::SBox;
 
     #[test]
     fn test_affine_transform_zero() {
