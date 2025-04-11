@@ -11,6 +11,6 @@ Explore algorithms, test implementations, and break ciphers - all in one playgro
 |----------------|---------------|---------------|--------------------------------------|
 | `Utf8->binary` | ✅             | ❌             | [UTF8.md](docs/theory/utf8.md)       |
 | `XOR`          | ✅             | ❌             | [XOR.md](docs/theory/xor.md)         |
-| `GF256`        | ✅             | ❌             | [GF256.md](docs/theory/aes/gf256.md) |
-| `S-Box`        | ✅            | ❌             | [SBox.md](docs/theory/aes/sbox.md)   |
+| `GF256`        | ✅             | ❌             | [GF256.md](docs/theory/gf256.md) |
+| `S-Box`        | ✅            | ❌             | [SBox.md](docs/theory/sbox.md)   |
 | `AES-256`      | 🚧            | ❌             | [AES.md](docs/theory/aes/aes.md)     |

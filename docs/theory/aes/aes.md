@@ -12,7 +12,7 @@
 
 ## **1. SubBytes**
 - Each byte `a` in State is replaced by `SBox[a]`.
-- **S-Box** = `GF256::inverse(a) + AffineTransform` (see [S-Box.md](./sbox.md)).
+- **S-Box** = `GF256::inverse(a) + AffineTransform` (see [S-Box.md](../sbox.md)).
 
 ---
 
