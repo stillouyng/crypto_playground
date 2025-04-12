@@ -46,8 +46,15 @@ impl GF256 {
 
     pub fn pow(a: u8, power: u8) -> u8 {
         let mut result = 1;
-        for _ in 0..power {
-            result = Self::mul(result, a);
+        let mut a_pow = a;
+        let mut exp = power;
+
+        while exp > 0 {
+            if exp % 2 == 1 {
+                result = Self::mul(result, a_pow);
+            }
+            a_pow = Self::mul(a_pow, a_pow);
+            exp >>= 1;
         }
         result
     }
