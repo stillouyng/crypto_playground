@@ -14,4 +14,4 @@ Explore algorithms, test implementations, and break ciphers - all in one playgro
 | `GF256`         | ✅             | ❌             | [GF256.md](docs/theory/gf256.md)                                                                         |
 | `S-Box`         | ✅             | ❌             | [SBox.md](docs/theory/sbox.md)                                                                           |
 | `Key Expansion` | ✅             | ❌             | [KeyExpansion.md](docs/theory/aes/key_expansion.md)<br><br>[Utilities.md](docs/theory/aes/converters.md) |
-| `AES-256`       | 🚧            | ❌             | [AES.md](docs/theory/aes/aes.md)                                                                         |
+| `AES-256`       | ✅             | ❌             | [AES.md](docs/theory/aes/aes.md)                                                                         |
