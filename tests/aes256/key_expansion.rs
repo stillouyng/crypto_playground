@@ -39,10 +39,12 @@ mod tests {
         ];
 
         let expanded_keys = KeyExpansion::new().expand(&key);
-        /// In AES-256, the key schedule starts with 8 words (32 bytes) from the input key.
-        /// The actual "round keys" used in encryption begin from word 8 (`w[8]`) onward.
-        /// Therefore, the first round key is composed of `w[8] w[9] w[10] w[11]`,
-        /// which in our implementation is `expanded_keys[2]`.
+        /*
+            In AES-256, the key schedule starts with 8 words (32 bytes) from the input key.
+            The actual "round keys" used in encryption begin from word 8 (`w[8]`) onward.
+            Therefore, the first round key is composed of `w[8] w[9] w[10] w[11]`,
+            which in our implementation is `expanded_keys[2]`.
+        */
         assert_eq!(
             expanded_keys[2],
             [
@@ -59,9 +61,11 @@ mod tests {
 
         let resp_false = expanded_keys.iter().all(|k| k != &[0u8; 16]);
         assert_eq!(resp_false, false);
-        /// The same logic as it was in previous test.
-        /// Not-null values we'll got in first round key
-        /// which is `expanded_keys[2]` etc..
+        /*
+            The same logic as it was in previous test.
+            Not-null values we'll got in first round key
+            which is `expanded_keys[2]` etc..
+         */
         let resp_true = expanded_keys[2..].iter().all(|k| k != &[0u8; 16]);
         assert!(resp_true);
 
