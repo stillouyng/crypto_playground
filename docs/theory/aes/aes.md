@@ -57,5 +57,35 @@ A linear transformation that shuffles the data within each column of the State m
 ---
 
 ## **4. AddRoundKey _(Coming Soon!)_.**
+**Purpose:**
+
+Applies a bitwise `XOR` between the `State matrix` and the current `Round Key`.
+This is the only step that directly incorporates the encryption key into the transformation process.
+
+- Each byte of the State matrix is XORed with the corresponding byte of the Round Key:
+
+```plaintext
+State[row][col] = State[row][col] XOR RoundKey[row][col] 
+```
+
+1. **Round Key Format:**
+    - The `16-byte` Round Key is interpreted as a `4x4 column-major` matrix:
+    ```plaintext
+    RoundKey = [
+        [k0,  k4,  k8,  k12],  // Column 0
+        [k1,  k5,  k9,  k13],  // Column 1
+        [k2,  k6,  k10, k14],  // Column 2
+        [k3,  k7,  k11, k15]   // Column 3
+    ]
+    ```
+    - But in memory, it's stored like a **flat** array: `k0, k1, k2, ..., k15]`.
+2. **Indexing:**
+    - For a flat Round Key array, the byte at `([row][col])` is accessed via:
+    ```plaintext
+    round_key[col * 4 + row];
+    ```
+3. **First/Last Round:**
+    - Applied **before the first round** (initial key addition).
+    - Applied **in every round** (including the final round).
 
 ---
