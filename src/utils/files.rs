@@ -1,6 +1,6 @@
 use std::{fs::File, io::Write};
 
-pub fn write_to_file(data: &Vec<u8>, filename: &str) -> bool {
+pub fn write_to_file(data: &[u8], filename: &str) -> bool {
     let filepath = format!("files/{}.txt", filename);
     let mut file = File::create(filepath).unwrap();
     let string_binary = get_binary(data);
@@ -8,7 +8,7 @@ pub fn write_to_file(data: &Vec<u8>, filename: &str) -> bool {
     true
 }
 
-pub fn get_binary(data: &Vec<u8>) -> String {
+pub fn get_binary(data: &[u8]) -> String {
     data.iter()
         .map(|byte| format!("{:08b}", byte))
         .collect::<Vec<String>>()

@@ -19,9 +19,9 @@ impl AES {
     }
 
     pub fn shift_rows(&self, state: &mut [[u8; 4]; 4]) {
-        for i in 1..4 {
-            state[i].rotate_left(i);
-        }
+        state[1].rotate_left(1);
+        state[2].rotate_left(2);
+        state[3].rotate_left(3);
     }
 
     pub fn mix_columns(&self, state: &mut [[u8; 4]; 4]) {
@@ -44,5 +44,11 @@ impl AES {
                 state[row][col] ^= round_key[col * 4 + row];
             }
         }
+    }
+}
+
+impl Default for AES {
+    fn default() -> Self {
+        Self::new()
     }
 }

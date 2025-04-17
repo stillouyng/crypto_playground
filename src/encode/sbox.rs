@@ -33,3 +33,9 @@ impl SBox {
         self.table[byte as usize]
     }
 }
+
+impl Default for SBox {
+    fn default() -> Self {
+        Self::new()
+    }
+}

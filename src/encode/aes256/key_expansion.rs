@@ -50,3 +50,9 @@ impl KeyExpansion {
             .collect()
     }
 }
+
+impl Default for KeyExpansion {
+    fn default() -> Self {
+        KeyExpansion::new()
+    }
+}

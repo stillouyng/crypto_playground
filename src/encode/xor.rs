@@ -12,7 +12,7 @@ pub fn generate_key(length: usize) -> Vec<u8> {
 
 pub fn xor_encrypt(data: &[u8]) -> Vec<u8> {
     let key = &generate_key(data.len());
-    let resp = data
+    let resp: Vec<u8> = data
         .iter()
         .zip(key.iter().cycle())
         .map(|(&a, &b)| a ^ b)
