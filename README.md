@@ -1,6 +1,6 @@
 # crypto_playground
 
-[![Rust](https://github.com/stillouyng/crypto_playground/actions/workflows/rust.yml/badge.svg)](https://github.com/stillouyng/crypto_playground/actions/workflows/rust.yml)
+[![Rust](https://github.com/stillouyng/crypto_playground/actions/workflows/rust.yml/badge.svg?branch=main)](https://github.com/stillouyng/crypto_playground/actions/workflows/rust.yml)
 
 
 **A sandbox for encryption experiments in Rust**  
