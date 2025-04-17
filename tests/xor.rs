@@ -1,7 +1,6 @@
-
 #[cfg(test)]
 mod tests {
-    use crypto_playground::encode::{xor_encrypt, generate_key};
+    use crypto_playground::encode::{generate_key, xor_encrypt};
 
     #[test]
     #[ignore = "Works with files. Will not be success when tested with CI"]

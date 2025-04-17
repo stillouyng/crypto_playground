@@ -1,8 +1,6 @@
 pub struct GF256;
 
-
 impl GF256 {
-
     pub fn add(a: u8, b: u8) -> u8 {
         a ^ b
     }

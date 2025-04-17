@@ -15,7 +15,6 @@ mod tests {
         assert_eq!(SBox::affine_transform(GF256::inverse(0x01)), 0x7C);
     }
 
-
     #[test]
     fn test_sbox_values() {
         let sbox = SBox::new();
@@ -23,5 +22,4 @@ mod tests {
         assert_eq!(sbox.substitute(0x53), 0xED);
         assert_eq!(sbox.substitute(0xFF), 0x16);
     }
-
 }

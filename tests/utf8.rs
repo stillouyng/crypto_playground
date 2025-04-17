@@ -1,7 +1,7 @@
 #[cfg(test)]
 mod tests {
-    use rand::{Rng, thread_rng};
     use crypto_playground::encode::encode;
+    use rand::{Rng, thread_rng};
 
     #[test]
     fn test_encode_is_just_bytes() {

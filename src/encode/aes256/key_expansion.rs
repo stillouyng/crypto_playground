@@ -1,19 +1,17 @@
 use crate::encode::SBox;
-use crate::utils::{sub_word, rot_word, xor_words};
+use crate::utils::{rot_word, sub_word, xor_words};
 
 pub struct KeyExpansion {
     sbox: SBox,
-    rcon: [u8; 14]
+    rcon: [u8; 14],
 }
-
 
 impl KeyExpansion {
     pub fn new() -> Self {
         KeyExpansion {
             sbox: SBox::new(),
             rcon: [
-                0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40,
-                0x80, 0x1B, 0x36, 0x6C, 0xD8, 0xAB, 0x4D
+                0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1B, 0x36, 0x6C, 0xD8, 0xAB, 0x4D,
             ],
         }
     }
@@ -22,12 +20,7 @@ impl KeyExpansion {
         let mut words = Vec::with_capacity(60);
 
         for i in 0..8 {
-            words.push([
-                key[4 * i],
-                key[4 * i + 1],
-                key[4 * i + 2],
-                key[4 * i + 3],
-            ]);
+            words.push([key[4 * i], key[4 * i + 1], key[4 * i + 2], key[4 * i + 3]]);
         }
 
         // Генерация оставшихся слов
@@ -45,13 +38,15 @@ impl KeyExpansion {
             words.push(new_word);
         }
 
-        (0..15).map(|round| {
-            let mut round_key = [0u8; 16];
-            for j in 0..4 {
-                let word_idx = round * 4 + j;
-                round_key[4 * j..4 * j + 4].copy_from_slice(&words[word_idx]);
-            }
-            round_key
-        }).collect()
+        (0..15)
+            .map(|round| {
+                let mut round_key = [0u8; 16];
+                for j in 0..4 {
+                    let word_idx = round * 4 + j;
+                    round_key[4 * j..4 * j + 4].copy_from_slice(&words[word_idx]);
+                }
+                round_key
+            })
+            .collect()
     }
 }

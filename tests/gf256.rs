@@ -49,5 +49,4 @@ mod tests {
             assert_eq!(GF256::mul(a, inv), 0x01, "Failed for a = 0x{:02X}", a);
         }
     }
-
 }

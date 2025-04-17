@@ -1,16 +1,13 @@
-use crate::encode::SBox;
 use crate::encode::GF256;
-
+use crate::encode::SBox;
 
 pub struct AES {
-    sbox: SBox
+    sbox: SBox,
 }
 
 impl AES {
     pub fn new() -> Self {
-        AES {
-            sbox: SBox::new()
-        }
+        AES { sbox: SBox::new() }
     }
 
     pub fn sub_bytes(&self, state: &mut [[u8; 4]; 4]) {
